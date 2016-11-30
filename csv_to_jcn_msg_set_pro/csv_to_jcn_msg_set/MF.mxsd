@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:complexType name="emp">
+        <xsd:annotation>
+      <xsd:appinfo source="WMQI_APPINFO">
+        <tdsStructRep messageSetDefaultRep="Text_CSV" observeElementLength="true" suppressAbsentElementDelimiters="EndOfType"/>
+      </xsd:appinfo>
+    </xsd:annotation>
+        <xsd:sequence>
+      <xsd:element name="ENAME" type="xsd:string"/>
+      <xsd:element name="EID" type="xsd:int"/>
+      <xsd:element name="EDATE" type="xsd:date"/>
+      <xsd:element block="" name="EBOB" type="xsd:hexBinary">
+        <xsd:annotation>
+          <xsd:appinfo source="WMQI_APPINFO">
+            <tdsElemRep length="5" messageSetDefaultRep="Text_CSV" precision="-1"/>
+          </xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="EMPLOYEE1" type="result">
+    <xsd:annotation>
+      <xsd:appinfo source="WMQI_APPINFO">
+        <MRMessage messageDefinition="/0/EMPLOYEE1;XSDElementDeclaration$MRObject"/>
+      </xsd:appinfo>
+    </xsd:annotation>
+  </xsd:element>
+    <xsd:complexType name="result">
+    <xsd:annotation>
+      <xsd:appinfo source="WMQI_APPINFO">
+        <tdsStructRep delimiter="&lt;CR&gt;&lt;LF&gt;" messageSetDefaultRep="Text_CSV"/>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" name="csv" type="emp"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>
